@@ -10,7 +10,7 @@ namespace DL
     {
         public static string GetConection()
         {
-            return "Data Source=.;Initial Catalog = IMarquezProgramacionNCapas;Persist Security Info=True;User ID=sa;Password=pass@word1";
+            return "Data Source=.;Initial Catalog = JTorresControlEscolar;Persist Security Info=True;User ID=sa;Password=pass@word1";
         }
     }
 }

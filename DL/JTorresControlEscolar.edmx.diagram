@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f840dbd64a04913aff6db4103c6e46c" Name="Diagram1">
+        <EntityTypeShape EntityType="JTorresControlEscolarModel.Alumno" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JTorresControlEscolarModel.Materia" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JTorresControlEscolarModel.AlumnoMateria" Width="1.5" PointX="5" PointY="0.75" />
+        <AssociationConnector Association="JTorresControlEscolarModel.FK__AlumnoMat__IdAlu__1ED998B2" />
+        <AssociationConnector Association="JTorresControlEscolarModel.FK__AlumnoMat__IdMat__1FCDBCEB" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
