@@ -8,5 +8,9 @@ namespace DL
 {
     public class Conexion
     {
+        public static string GetConection()
+        {
+            return "Data Source=.;Initial Catalog = IMarquezProgramacionNCapas;Persist Security Info=True;User ID=sa;Password=pass@word1";
+        }
     }
 }

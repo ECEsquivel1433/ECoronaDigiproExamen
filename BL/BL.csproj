@@ -45,5 +45,15 @@
     <Compile Include="Materia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DL\DL.csproj">
+      <Project>{ca706614-323b-46ff-b8a9-ed9ed5723d61}</Project>
+      <Name>DL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ML\ML.csproj">
+      <Project>{0e7f4f24-48c7-4aa8-bf55-e6a57a8eca99}</Project>
+      <Name>ML</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
