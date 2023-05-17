@@ -11,7 +11,6 @@ namespace SLWFC
     [ServiceContract]
     public interface IAlumnos
     {
-
         [OperationContract]
         SLWFC.Result Add(ML.Alumno alumno);
 

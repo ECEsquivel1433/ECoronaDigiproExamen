@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.5.1.1\lib\net462\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -122,25 +125,27 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Connected Services\AlumnosService\Reference.cs">
+    <Compile Include="Connected Services\ServiceAlumno\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MateriaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\AlumnosService\Alumnos.disco" />
-    <None Include="Connected Services\AlumnosService\configuration91.svcinfo" />
-    <None Include="Connected Services\AlumnosService\configuration.svcinfo" />
-    <Content Include="Connected Services\AlumnosService\PL1.AlumnosService.Result.datasource">
+    <None Include="Connected Services\ServiceAlumno\Alumnos.disco" />
+    <None Include="Connected Services\ServiceAlumno\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceAlumno\configuration.svcinfo" />
+    <Content Include="Connected Services\ServiceAlumno\PL1.ServiceAlumno.Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\AlumnosService\Reference.svcmap">
+    <None Include="Connected Services\ServiceAlumno\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -163,25 +168,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <None Include="Connected Services\AlumnosService\Alumnos.wsdl" />
-    <None Include="Connected Services\AlumnosService\Alumnos.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\AlumnosService\Alumnos1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\AlumnosService\Alumnos2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\AlumnosService\Alumnos3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\AlumnosService\Alumnos4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\AlumnosService\Alumnos5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -210,6 +196,25 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Connected Services\ServiceAlumno\Alumnos.wsdl" />
+    <None Include="Connected Services\ServiceAlumno\Alumnos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceAlumno\Alumnos1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceAlumno\Alumnos2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceAlumno\Alumnos3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceAlumno\Alumnos4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceAlumno\Alumnos5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -235,10 +240,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Alumno\GetAll.cshtml" />
+    <Content Include="Views\Alumno\Form.cshtml" />
+    <Content Include="Views\Alumno\Modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Materia\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -249,7 +258,17 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\AlumnosService\" />
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{0f82d8b9-0f9e-4d17-a713-364394aa8361}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ML\ML.csproj">
+      <Project>{0e7f4f24-48c7-4aa8-bf55-e6a57a8eca99}</Project>
+      <Name>ML</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceAlumno\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
