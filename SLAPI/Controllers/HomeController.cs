@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace SLAPI.Controllers
 {
-    public class HomController : Controller
+    public class HomeController : Controller
     {
         public ActionResult Index()
         {

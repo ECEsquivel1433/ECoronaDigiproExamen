@@ -1,4 +1,4 @@
-﻿@model ML.Alumno
+﻿@model ML.Materia
 @{
     ViewData["Title"] = "GetAll";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,9 +6,9 @@
 <div class="container">
     <section>
 
-        <h1 class="text-center">Lista de Alumnos</h1>
+        <h1 class="text-center">Lista de Materias</h1>
         <p>
-            En este modulo puedes visualizar los Alumnos existentes,<br />
+            En este modulo puedes visualizar las Materias existentes,<br />
             agregar, modificar y eliminar.
         </p>
     </section>
@@ -16,13 +16,13 @@
 
         <div style="float:right;">
             <div class="row">
-                @Html.ActionLink("Agregar", "Form", "Alumno", htmlAttributes: new { @class = "btn btn-success bi bi-person-plus-fill" })
+                @Html.ActionLink("Agregar", "Form", "Materia", htmlAttributes: new { @class = "btn btn-success bi bi-person-plus-fill" })
             </div>
         </div>
     </section>
     <hr />
     <section>
-        @if (Model.Alumnos == null)
+        @if (Model.Materias == null)
         {
             <div class="row">
                 <div class="alert alert-danger" role="alert">
@@ -36,20 +36,22 @@
                 <thead>
                     <tr>
                         <td class="text-center" style=" font-weight:bold;">Editar</td>
-                        <td class="hidden">IdAlumno</td>
+                        <td class="hidden">IdMatera</td>
                         <td class="text-center" style="font-weight:bold;">Nombre</td>
+                        <td class="text-center" style="font-weight:bold;">Costo</td>
                         <td class="text-center" style=" font-weight:bold;">Eliminar</td>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach (ML.Alumno alumno in Model.Alumnos)
+                    @foreach (ML.Materia materia in Model.Materias)
                     {
                         <tr>
-                            <td class="text-center"><a class="btn btn-warning bi bi-pencil-square" href="@Url.Action("Form", "Alumno", new { IdAlumno = alumno.IdAlumno })"></a></td>
-                            <td class="hidden">@alumno.IdAlumno</td>
-                            <td>@alumno.Nombre @alumno.ApellidoPaterno @alumno.ApellidoMaterno </td>
-                            <td class="text-center"><a class="btn btn-danger bi bi-trash" href="@Url.Action("Delete", "Alumno", new { IdAlumno = alumno.IdAlumno})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                            <td class="text-center"><a class="btn btn-warning bi bi-pencil-square" href="@Url.Action("Form", "Materia", new { IdMateria = materia.IdMateria })"></a></td>
+                            <td class="hidden">@materia.IdMateria</td>
+                            <td>@materia.Nombre </td>
+                            <td>@materia.Costo </td>
+                            <td class="text-center"><a class="btn btn-danger bi bi-trash" href="@Url.Action("Delete", "Materia", new { IdMateria = materia.IdMateria})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
                         </tr>
                     }
                 </tbody>
@@ -57,4 +59,3 @@
         }
     </section>
 </div>
-
