@@ -97,10 +97,6 @@
       <Project>{0e7f4f24-48c7-4aa8-bf55-e6a57a8eca99}</Project>
       <Name>ML</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PL1\PL1.csproj">
-      <Project>{5a09b00f-dbe5-492f-b898-fc619de87f4d}</Project>
-      <Name>PL1</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
