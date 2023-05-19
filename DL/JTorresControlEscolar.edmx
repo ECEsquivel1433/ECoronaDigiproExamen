@@ -72,6 +72,12 @@
           <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
           <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="DeleteMateriaAsignada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAlumnoMateria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetMateriaAsignada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAlumno" Type="int" Mode="In" />
+        </Function>
         <Function Name="MateriaAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Costo" Type="decimal" Mode="In" />
@@ -142,11 +148,11 @@
             <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AlumnoDelete">
-            <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+          <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="AlumnoGetAll" ReturnType="Collection(JTorresControlEscolarModel.AlumnoGetAll_Result)" />
           <FunctionImport Name="AlumnoGetById" ReturnType="Collection(JTorresControlEscolarModel.AlumnoGetById_Result)">
-            <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+          <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="AlumnoUpdate">
             <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
@@ -154,21 +160,27 @@
             <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
             <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="MateriaAdd">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="Costo" Mode="In" Type="Decimal" />
-          </FunctionImport>
           <FunctionImport Name="MateriaDelete">
-            <Parameter Name="IdMateria" Mode="In" Type="Int32" />
+          <Parameter Name="IdMateria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="MateriaGetAll" ReturnType="Collection(JTorresControlEscolarModel.MateriaGetAll_Result)" />
           <FunctionImport Name="MateriaGetById" ReturnType="Collection(JTorresControlEscolarModel.MateriaGetById_Result)">
-            <Parameter Name="IdMateria" Mode="In" Type="Int32" />
+          <Parameter Name="IdMateria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="MateriaUpdate">
             <Parameter Name="IdMateria" Mode="In" Type="Int32" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Costo" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="MateriaAdd">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Costo" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="GetMateriaAsignada" ReturnType="Collection(JTorresControlEscolarModel.GetMateriaAsignada_Result)">
+          <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteMateriaAsignada">
+            <Parameter Name="IdAlumnoMateria" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="AlumnoMateria">
@@ -227,6 +239,11 @@
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Costo" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
+        <ComplexType Name="GetMateriaAsignada_Result">
+          <Property Type="Int32" Name="IdAlumnoMateria" Nullable="false" />
+          <Property Type="Int32" Name="IdMateria" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -284,7 +301,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AlumnoUpdate" FunctionName="JTorresControlEscolarModel.Store.AlumnoUpdate" />
-          <FunctionImportMapping FunctionImportName="MateriaAdd" FunctionName="JTorresControlEscolarModel.Store.MateriaAdd" />
           <FunctionImportMapping FunctionImportName="MateriaDelete" FunctionName="JTorresControlEscolarModel.Store.MateriaDelete" />
           <FunctionImportMapping FunctionImportName="MateriaGetAll" FunctionName="JTorresControlEscolarModel.Store.MateriaGetAll">
             <ResultMapping>
@@ -305,6 +321,17 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MateriaUpdate" FunctionName="JTorresControlEscolarModel.Store.MateriaUpdate" />
+          <FunctionImportMapping FunctionImportName="MateriaAdd" FunctionName="JTorresControlEscolarModel.Store.MateriaAdd" />
+          <FunctionImportMapping FunctionImportName="GetMateriaAsignada" FunctionName="JTorresControlEscolarModel.Store.GetMateriaAsignada">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JTorresControlEscolarModel.GetMateriaAsignada_Result">
+                <ScalarProperty Name="IdAlumnoMateria" ColumnName="IdAlumnoMateria" />
+                <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteMateriaAsignada" FunctionName="JTorresControlEscolarModel.Store.DeleteMateriaAsignada" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8f840dbd64a04913aff6db4103c6e46c" Name="Diagram1">
-        <EntityTypeShape EntityType="JTorresControlEscolarModel.Alumno" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JTorresControlEscolarModel.Alumno" Width="1.5" PointX="8" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="JTorresControlEscolarModel.Materia" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JTorresControlEscolarModel.AlumnoMateria" Width="1.5" PointX="5" PointY="0.75" />
         <AssociationConnector Association="JTorresControlEscolarModel.FK__AlumnoMat__IdAlu__1ED998B2" />

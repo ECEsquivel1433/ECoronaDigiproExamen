@@ -1,0 +1,54 @@
+﻿@model ML.Alumno
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <section>
+
+        <h1 class="text-center">Lista de Alumnos</h1>
+        <p>
+            En este modulo puedes visualizar los Alumnos existentes,<br />
+            agregar, modificar y eliminar.
+        </p>
+    </section>
+    <section>
+
+        <div style="float:right;">
+        </div>
+    </section>
+    <hr />
+    <section>
+        @if (Model.Alumnos == null)
+        {
+            <div class="row">
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.Message
+                </div>
+            </div>
+        }
+        else
+        {
+            <table class="table table-dark table-hover table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <td class="text-center" style=" font-weight:bold;">Editar</td>
+                        <td class="hidden">IdAlumno</td>
+                        <td class="text-center" style="font-weight:bold;">Nombre</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.Alumno alumno in Model.Alumnos)
+                    {
+                        <tr>
+                            <td class="text-center"><a class="btn btn-info bi bi-pencil-square" href="@Url.Action("GetMateriasAsignadas", "AlumnoMateria", new { IdAlumno = alumno.IdAlumno })"></a></td>
+                            <td class="hidden">@alumno.IdAlumno</td>
+                            <td>@alumno.Nombre @alumno.ApellidoPaterno @alumno.ApellidoMaterno </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </section>
+</div>
+
