@@ -44,8 +44,6 @@ namespace PL3.Controllers
 
             return View(alumnomateria);
         }
-
-
         public ActionResult Delete(ML.AlumnoMateria alumnomateria)
         {
             //ML.AlumnoMateria alumnomateria = new ML.AlumnoMateria();
@@ -63,6 +61,36 @@ namespace PL3.Controllers
             {
                 ViewBag.message = "ocurrió un error al eliminar el registro " + result.ErrorMessage;
 
+            }
+            return PartialView("Modal");
+        }
+        [HttpPost]
+
+        public ActionResult AddAlumnoMateria(ML.AlumnoMateria alumnomateria)
+        {
+            ML.Result result = new ML.Result();
+            if (alumnomateria.AlumnoMaterias != null)
+            {
+                foreach (string IdMateria in alumnomateria.AlumnoMaterias)
+                {
+                    ML.AlumnoMateria alumnomateria1 = new ML.AlumnoMateria();
+
+                    alumnomateria1.Alumno = new ML.Alumno();
+                    alumnomateria1.Materias = new ML.Materia();
+
+                    alumnomateria1.Alumno.IdAlumno = alumnomateria.Alumno.IdAlumno;
+                    alumnomateria1.Materias.IdMateria = int.Parse(IdMateria);
+
+                    ML.Result resul = BL.AlumnoMateria.AddAlumnoMateria(alumnomateria1);
+                }
+                result.Correct = true;
+                ViewBag.Message = "Se ha actualizaron las materias";
+                ViewBag.MateriasAsignadas = true;
+                ViewBag.IdAlumno = alumnomateria.Alumno.IdAlumno;
+            }
+            else
+            {
+                result.Correct = false;
             }
             return PartialView("Modal");
         }

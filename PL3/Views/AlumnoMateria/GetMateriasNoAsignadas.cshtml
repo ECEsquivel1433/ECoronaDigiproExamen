@@ -10,7 +10,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        @using (Html.BeginForm("Form", "AlumnoMateria", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("AddAlumnoMateria", "AlumnoMateria", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="row">
                 <div class="col">
@@ -49,9 +49,10 @@
             <table class="table table-dark table-hover table-bordered table-responsive">
                 <thead>
                     <tr>
-                        <td class="text-center" style=" font-weight:bold;">Eliminar</td>
-                        <td class="hidden">IdAlumno</td>
+                        <td class="text-center" style=" font-weight:bold;">Agregar</td>
+                        <td class="hidden">IdMateria</td>
                         <td class="text-center" style="font-weight:bold;">Nombre</td>
+                        <td class="text-center" style="font-weight:bold;">Costo</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,8 +60,12 @@
                     @foreach (ML.AlumnoMateria alumnomateria in Model.AlumnoMaterias)
                     {
                         <tr>
-                            <td class="text-center"><a class="btn btn-danger bi bi-trash" href="@Url.Action("Delete", "AlumnoMateria", new { IdAlumnoMateria = alumnomateria.IdAlumnoMateria})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                            <td class="text-center">
+                                <input type="checkbox" value="@alumnomateria.Materias.IdMateria" name="AlumnoMaterias">
+                            </td>
+                            <td class="hidden">@alumnomateria.Materias.IdMateria</td>
                             <td class="text-center">@alumnomateria.Materias.Nombre</td>
+                            <td class="text-center">@alumnomateria.Materias.Costo</td>
 
                         </tr>
                     }
@@ -68,7 +73,8 @@
             </table>
             <br />
             <div class="col">
-                @Html.ActionLink("Regresar", "GetAll", "GetMateriasAsignadas", htmlAttributes: new { @class = "btn btn-danger" })
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                @Html.ActionLink("Cancelar", "GetAll", "GetMateriasAsignadas", htmlAttributes: new { @class = "btn btn-danger" })
             </div>
         }
     </div>
