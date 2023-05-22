@@ -219,7 +219,7 @@ namespace BL
             }
             return result;
         }
-        public static ML.Result Delete(ML.AlumnoMateria alumnomateria)
+        public static ML.Result DeleteMateriaAsignada(ML.AlumnoMateria alumnomateria)
         {
             ML.Result result = new ML.Result();
             try

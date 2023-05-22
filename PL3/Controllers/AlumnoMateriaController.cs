@@ -48,7 +48,7 @@ namespace PL3.Controllers
         {
             //ML.AlumnoMateria alumnomateria = new ML.AlumnoMateria();
             //alumnomateria.IdAlumnoMateria = IdAlumnoMateria;
-            ML.Result result = BL.AlumnoMateria.Delete(alumnomateria);
+            ML.Result result = BL.AlumnoMateria.DeleteMateriaAsignada(alumnomateria);
 
             ViewBag.MateriasAsignadas = true;
             ViewBag.IdAlumno = alumnomateria.IdAlumnoMateria;
@@ -82,6 +82,30 @@ namespace PL3.Controllers
                     alumnomateria1.Materias.IdMateria = int.Parse(IdMateria);
 
                     ML.Result resul = BL.AlumnoMateria.AddAlumnoMateria(alumnomateria1);
+                }
+                result.Correct = true;
+                ViewBag.Message = "Se ha actualizaron las materias";
+                ViewBag.MateriasAsignadas = true;
+                ViewBag.IdAlumno = alumnomateria.Alumno.IdAlumno;
+            }
+            else
+            {
+                result.Correct = false;
+            }
+            return PartialView("Modal");
+        }
+        public ActionResult DeleteAlumnoMateria(ML.AlumnoMateria alumnomateria)
+        {
+            ML.Result result = new ML.Result();
+            if (alumnomateria.AlumnoMaterias != null)
+            {
+                foreach (string IdAlumnoMateria in alumnomateria.AlumnoMaterias)
+                {
+                    ML.AlumnoMateria alumnomateria1 = new ML.AlumnoMateria();
+
+                    alumnomateria1.IdAlumnoMateria = int.Parse(IdAlumnoMateria);
+
+                    ML.Result resul = BL.AlumnoMateria.DeleteMateriaAsignada(alumnomateria1);
                 }
                 result.Correct = true;
                 ViewBag.Message = "Se ha actualizaron las materias";

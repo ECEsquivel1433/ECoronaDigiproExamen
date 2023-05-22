@@ -10,7 +10,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        @using (Html.BeginForm("Delete", "AlumnoMateria", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("DeleteAlumnoMateria", "AlumnoMateria", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
 
             <div class="row">
@@ -52,36 +52,49 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-dark table-hover table-bordered table-responsive">
-                <thead>
-                    <tr>
-                        <td class="text-center" style=" font-weight:bold;">Eliminar</td>
-                        <td class="hidden">IdAlumnoMateria</td>
-                        <td class="hidden">IdMateria</td>
-                        <td class="text-center" style="font-weight:bold;">Nombre</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (ML.AlumnoMateria alumnomateria in Model.AlumnoMaterias)
-                    {
+
+            if (Model.AlumnoMaterias == null)
+            {
+                <table class="table table-dark table-hover table-bordered table-responsive">
+                    <thead>
                         <tr>
-                            <td class="text-center">
-                                <input type="checkbox" value="@alumnomateria.Materias.IdMateria" name="AlumnoMaterias">
-                            </td>
-                            <td class="hidden">@alumnomateria.IdAlumnoMateria</td>
-                            <td class="hidden">@alumnomateria.Materias.IdMateria</td>
-                            <td class="text-center">@alumnomateria.Materias.Nombre</td>
+                            <td class="text-center" style=" font-weight:bold;">El alumno no tiene materias asignadas</td>
                         </tr>
-                    }1
-                </tbody>
-            </table>
-            <br />
+                    </thead>
+                </table>
+            }
+            else
+            {
+                <table class="table table-dark table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <td class="text-center" style=" font-weight:bold;">Eliminar</td>
+                            <td class="hidden">IdAlumnoMateria</td>
+                            <td class="hidden">IdMateria</td>
+                            <td class="text-center" style="font-weight:bold;">Nombre</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ML.AlumnoMateria alumnomateria in Model.AlumnoMaterias)
+                        {
+
+                            <tr>
+                                <td class="text-center">
+                                    <input type="checkbox" value="@alumnomateria.IdAlumnoMateria" name="AlumnoMaterias">
+                                </td>
+                                <td class="hidden">@alumnomateria.IdAlumnoMateria</td>
+                                <td class="hidden">@alumnomateria.Materias.IdMateria</td>
+                                <td class="text-center">@alumnomateria.Materias.Nombre</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            }
             <div class="col">
                 <input type="submit" value="Eliminar" class="btn btn-danger" />
                 @Html.ActionLink("Regresar", "GetAll", "AlumnoMateria", htmlAttributes: new { @class = "btn btn-danger" })
             </div>
-
-
         }
     </div>
 </div>
