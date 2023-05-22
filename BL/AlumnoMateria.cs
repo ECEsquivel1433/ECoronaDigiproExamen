@@ -11,46 +11,6 @@ namespace BL
 {
     public class AlumnoMateria
     {
-        //public static ML.Result GetMateriasAsignadas(int IdAlumno)
-        //{
-        //    ML.Result result = new ML.Result();
-        //    try
-        //    {
-        //        using(DL.JTorresControlEscolarEntities context = new DL.JTorresControlEscolarEntities())
-        //        {
-        //            var query = context.GetMateriaAlumno(IdAlumno).ToList();
-        //            result.Objects = new List<object>();
-        //            if (query != null)
-        //            {
-        //                foreach (var obj in query)
-        //                {
-        //                    ML.AlumnoMateria alumnomateria = new ML.AlumnoMateria();
-        //                    alumnomateria.Materia = new ML.Materia();
-        //                    alumnomateria.Alumno = new ML.Alumno();
-
-        //                    alumnomateria.IdAlumnoMateria = obj.IdAlumnoMateria;
-        //                    alumnomateria.Materia.Nombre = obj.NombreMateria;
-        //                    alumnomateria.Alumno.IdAlumno = obj.IdAlumno;
-
-        //                    result.Objects.Add(alumnomateria);
-        //                    result.Correct = true;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                result.Correct = false;
-        //                result.ErrorMessage = "No se pudo realizar la consulta";
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result.Correct = false;
-        //        result.ErrorMessage = ex.Message;
-        //        result.Ex = ex;
-        //    }
-        //    return result;
-        //}
         public static ML.Result GetMateriasAsignadas(int IdAlumno)
         {
             ML.Result result = new ML.Result();
